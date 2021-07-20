@@ -54,6 +54,11 @@
   <ItemGroup>
      <Compile Include="Assets\Script\Geo.cs" />
      <Compile Include="Assets\Script\Teleport.cs" />
+     <Compile Include="Assets\Script\ColorSpawn.cs" />
+     <Compile Include="Assets\Script\Forground.cs" />
+     <Compile Include="Assets\Script\Checkpoint.cs" />
+     <Compile Include="Assets\Script\Crown.cs" />
+     <Compile Include="Assets\Script\GameManager.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/home/sebastian/Unity/2020.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -684,6 +689,12 @@
  <Reference Include="Unity.2D.IK.Runtime">
  <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Animation.Triangle.Runtime">
  <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
  </Reference>
@@ -710,12 +721,6 @@
  </Reference>
  <Reference Include="Unity.2D.SpriteShape.Runtime">
  <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.cinemachine.editor">
- <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
- </Reference>
- <Reference Include="Cinemachine">
- <HintPath>/home/sebastian/Documents/GitHub/GeoKings/GeoKings/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

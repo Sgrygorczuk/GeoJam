@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
     public Transform exit;
     public Geo geo;
+    public bool isInOne;
+    public bool isVertical;
     
     /**
     * Input: hitBox
@@ -13,11 +13,24 @@ public class Teleport : MonoBehaviour
     */
     private void OnTriggerExit2D(Collider2D hitBox)
     {
-        print("hit");
+        var position = exit.position;
+        
         if (hitBox.CompareTag($"Geo"))
-        {        print("Geo");
-            var position = exit.position;
-            geo.Teleport(position.x, position.y);
+        {
+            if (isVertical)
+            {
+                if ((isInOne && geo.GetVelocity().y < 0) || (!isInOne && geo.GetVelocity().y > 0))
+                {
+                    geo.Teleport(position.x, position.y);
+                }
+            }
+            else
+            {
+                if ((isInOne && geo.GetVelocity().x > 0) || (!isInOne && geo.GetVelocity().x < 0))
+                {
+                    geo.Teleport(position.x, position.y);
+                }
+            }
         }
     }
 

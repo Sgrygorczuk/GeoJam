@@ -7,24 +7,28 @@ public class Geo : MonoBehaviour
     //==================================================================================================================
     // Variables 
     //==================================================================================================================
-    
+
     //====================================================== Misc  =====================================================
-    private float _xInput;          //The Horizontal Movement Input 
-    private const float Speed = 7.5f;      //The Speed at which the player moves 
-    
+    private float _xInput; //The Horizontal Movement Input 
+    private const float Speed = 7.5f; //The Speed at which the player moves 
+
     private Rigidbody2D _rigidbody2D;
     public SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider2D;
     public CircleCollider2D circleCollider2D;
-    
+
 
     public Sprite[] shapes;
-    
+
     private int _shapeIndex;
 
+    public Transform respawnPoint;
+
+    //================================================= Collision  =====================================================
     private bool _isGrounded;
     public float checkRadius;
-    public Transform groundCheck;
+    public Transform leftGroundCheck;
+    public Transform rightGroundCheck;
     public Transform leftCheck;
     public Transform rightCheck;
     public LayerMask whatIsGround;
@@ -60,6 +64,8 @@ public class Geo : MonoBehaviour
             {
                 circleCollider2D.enabled = true;
                 boxCollider2D.enabled = false;
+                _rigidbody2D.velocity =
+                    new Vector2(_rigidbody2D.velocity.x, _isGrounded ? 10 : _rigidbody2D.velocity.y);
             }
             else
             {
@@ -69,7 +75,8 @@ public class Geo : MonoBehaviour
 
         }
 
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius * 2, whatIsGround);
+        _isGrounded = (Physics2D.OverlapCircle(leftGroundCheck.position, checkRadius/2f, whatIsGround)) ||
+                      (Physics2D.OverlapCircle(rightGroundCheck.position, checkRadius/2f, whatIsGround));
         _isTouchingLeft = Physics2D.OverlapCircle(leftCheck.position, checkRadius, whatIsGround);
         _isTouchingRight = Physics2D.OverlapCircle(rightCheck.position, checkRadius, whatIsGround);
             
@@ -81,8 +88,6 @@ public class Geo : MonoBehaviour
     {
        UpdateMovement();
     }
-
-    public void Teleport(float x, float y) { _rigidbody2D.position = new Vector3(x, y); }
 
     //Purpose: Updates player movement 
     private void UpdateMovement()
@@ -98,11 +103,60 @@ public class Geo : MonoBehaviour
         var yVelocity = _rigidbody2D.velocity.y > 20 ?  20 : _rigidbody2D.velocity.y;
         if (_shapeIndex == 1)
         {
-            yVelocity = _isGrounded ? 0 : yVelocity > -5 ? -5 : yVelocity;
+            yVelocity = _isGrounded ? 0 : yVelocity > -7.5f ? -7.5f : yVelocity;
         }
 
         _rigidbody2D.velocity = new Vector2(xVelocity, yVelocity); 
     }
 
+    /**
+    * Input: hitBox
+    * Purpose: Check if the player enters into any triggering hitBoxes   
+    */
+    private void OnTriggerEnter2D(Collider2D hitBox)
+    {
+        if (hitBox.CompareTag($"Spike"))
+        {
+            Respawn();
+        }
+    }
+
+    private void Respawn()
+    {
+        var position = respawnPoint.position;
+        _rigidbody2D.velocity = new Vector2(0, 0);
+        _rigidbody2D.position = new Vector2(position.x, position.y);
+        spriteRenderer.color = Color.black;
+    }
+    
+
+    //================================================= Functions Called in Other Scripts ==============================
+    
+    public void Teleport(float x, float y) { _rigidbody2D.position = new Vector3(x, y); }
+
+    public void UpdateColor(Color color)
+    {
+        spriteRenderer.color = color;
+    }
+
+    public void UpdateCheckpoint(Vector3 position)
+    {
+        respawnPoint.position = position;
+    }
+    
+    public Vector2 GetPosition()
+    {
+        return _rigidbody2D.position;
+    }
+    
+    public Vector2 GetVelocity()
+    {
+        return _rigidbody2D.velocity;
+    }
+
+    public void SetVelocity(float x, float y)
+    {
+        _rigidbody2D.velocity = new Vector2(x, y);
+    }
 
 }
