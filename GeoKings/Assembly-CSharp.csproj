@@ -52,13 +52,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\Geo.cs" />
-     <Compile Include="Assets\Script\Teleport.cs" />
-     <Compile Include="Assets\Script\ColorSpawn.cs" />
-     <Compile Include="Assets\Script\Forground.cs" />
      <Compile Include="Assets\Script\Checkpoint.cs" />
+     <Compile Include="Assets\Script\Geo.cs" />
      <Compile Include="Assets\Script\Crown.cs" />
+     <Compile Include="Assets\Script\Teleport.cs" />
+     <Compile Include="Assets\Script\Forground.cs" />
      <Compile Include="Assets\Script\GameManager.cs" />
+     <Compile Include="Assets\Script\ColorSpawn.cs" />
+     <Compile Include="Assets\Script\Background.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/home/sebastian/Unity/2020.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
