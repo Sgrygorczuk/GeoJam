@@ -10,8 +10,8 @@ Play:
 
 Screenshots:
 
-<img src="https://img.itch.zone/aW1hZ2UvMTEzMjgzOS82NTgwNTgzLnBuZw==/347x500/TuOVi%2B.png" width="400">
-<img src="https://img.itch.zone/aW1hZ2UvMTEzMjgzOS82NTgwNTg2LnBuZw==/347x500/JAjqhH.png" width="400">
+<img src="https://img.itch.zone/aW1hZ2UvMTEzMjgzOS84NjYzNzIyLmdpZg==/original/Ylacu0.gif" width="400">
+<img src="https://img.itch.zone/aW1hZ2UvMTEzMjgzOS84NjYzNzE5LmdpZg==/original/VDzbdN.gif" width="400">
 
 Video:
 [Geo Kings Gameplay](https://www.youtube.com/watch?v=co3S8A0Ex5U)
